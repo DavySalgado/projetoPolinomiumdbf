@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -32,5 +34,8 @@ public class MatriculaAtividade {
     @ManyToOne
     @JoinColumn(name="FK_Atividade")
     Atividade atividade;
+
+    @ManyToMany(mappedBy = "matriculaAtividades")
+    private List<MatriculaLicao> matriculaLicaos;
 
 }
