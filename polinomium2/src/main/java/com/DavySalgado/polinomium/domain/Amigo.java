@@ -4,6 +4,8 @@ package com.DavySalgado.polinomium.domain;
 import javax.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 
 @Data
 @NoArgsConstructor
@@ -16,8 +18,7 @@ public class Amigo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    @ManyToOne
-    @JoinColumn(name="Usuario")
-    Usuario usuario;
+    @ManyToMany(mappedBy = "amigos")
+    private List<Usuario> usuarios;
 
 }

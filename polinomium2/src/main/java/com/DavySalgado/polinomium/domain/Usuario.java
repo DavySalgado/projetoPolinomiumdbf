@@ -2,15 +2,7 @@ package com.DavySalgado.polinomium.domain;
 
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.*;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -49,4 +41,9 @@ public class Usuario {
     @OneToMany(mappedBy = "usuario")
     private List<MatriculaAtividade> matriculaAtividades;
 
+    @ManyToMany
+    @JoinTable(name="associacao_usuario_amigo",
+        joinColumns = @JoinColumn(name="fk_usuario"),
+        inverseJoinColumns = @JoinColumn(name = "fk_amigo"))
+    private List<Amigo> amigos;
 }
